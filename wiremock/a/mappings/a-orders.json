@@ -1,0 +1,36 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/orders/pending"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": [
+          {
+            "externalOrderId": "A-1001",
+            "customerId": "C-42",
+            "items": [
+              {
+                "productId": "P-1",
+                "name": "Mouse",
+                "price": 79.9,
+                "quantity": 1
+              },
+              {
+                "productId": "P-2",
+                "name": "Teclado",
+                "price": 120.0,
+                "quantity": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

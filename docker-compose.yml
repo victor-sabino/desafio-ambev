@@ -1,0 +1,33 @@
+
+version: "3.8"
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+      - MONGO_INITDB_DATABASE=orderdb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  wiremock-a:
+    image: wiremock/wiremock:3.6.0
+    command: [ "--port", "8081", "--verbose" ]
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./wiremock/a:/home/wiremock
+
+  wiremock-b:
+    image: wiremock/wiremock:3.6.0
+    command: [ "--port", "8082", "--verbose" ]
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./wiremock/b:/home/wiremock
+
+volumes:
+  mongo_data:
