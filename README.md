@@ -20,7 +20,7 @@
 
 ## 🔌 Como simular os Produtos Externos A e B (WireMock)
 
-> Já existe um **docker-compose.yml** com **MongoDB**, **WireMock A (8081)** e **WireMock B (8082)**. Os stubs ficam em `wiremock/a/mappings` e `wiremock/b/mappings`.
+
 
 ### Subir os simuladores
 ```bash
@@ -76,10 +76,6 @@ Enquanto o B estiver indisponível, a exportação falhará e o serviço registr
 mongosh "mongodb://root:root@localhost:27017/orderdb?authSource=admin" --eval 'db.outbox_export.find().pretty()'
 mongosh "mongodb://root:root@localhost:27017/orderdb?authSource=admin" --eval 'db.orders.find().pretty()'
 ```
-
-> Dica: para idempotência por `externalOrderId`, garanta o índice único em ambientes locais caso necessário:
-> adicione `spring.data.mongodb.auto-index-creation=true` no `application.yml` **ou** crie manualmente no Mongo:
-> `db.orders.createIndex({externalOrderId:1},{unique:true})`.
 
 ## ▶️ Como rodar
 1) Suba o Mongo e os simuladores (A/B):

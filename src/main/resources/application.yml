@@ -8,6 +8,7 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_URI:mongodb://root:root@localhost:27017/orderdb?authSource=admin}
+      auto-index-creation: true
   threads:
     virtual:
       enabled: true
